@@ -1,0 +1,26 @@
+.productCard {
+  border: 1px solid black;
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.productCard img {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+}
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.content {
+  width: 100%;
+}
