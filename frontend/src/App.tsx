@@ -3,15 +3,17 @@ import LandingPage from "./pages/LandingPage";
 import Navbar from "./components/Navbar";
 import MyCart from "./pages/MyCart";
 import Profile from "./pages/Profile";
+import Product from "./pages/Product";
 
 function App() {
   return (
     <BrowserRouter>
-    <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/my-cart" element={<MyCart />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/product/:productId" element={<Product />} />
       </Routes>
     </BrowserRouter>
   );
