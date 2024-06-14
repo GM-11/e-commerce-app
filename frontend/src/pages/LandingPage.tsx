@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { ProductModel } from "../models/productModel";
 import ProductCard from "../components/ProductCard";
-
+import "./styles/landingPage.css";
 function LandingPage() {
   const [allProducts, setAllProducts] = useState<ProductModel[]>([]);
 
   async function getAllProducts() {
-    const response = await fetch("/products", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    setAllProducts(data);
+    try {
+      const response = await fetch("http://localhost:3000/products", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+
+      setAllProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -24,29 +29,26 @@ function LandingPage() {
     <div>
       <h1>Products</h1>
 
-      <section>
-        {allProducts.map((product) => {
-          const name = product.name;
-          const price = product.price;
-          const description = product.description;
-          const imageUrl = product.imageUrl;
-          const stock = product.stock;
-          const id = product.id;
+      {allProducts.length === 0 && <p>No products found</p>}
 
+      <section className="products">
+      {allProducts.length > 0 &&
+        allProducts.map((product) => {
           return (
             <ProductCard
-              key={id}
-              id={id}
-              name={name}
-              price={price}
-              description={description}
-              imageUrl={imageUrl}
-              stock={stock}
+              key={product._id}
+              id={product._id}
+              name={product.name}
+              price={product.price}
+              description={product.description}
+              imageUrl={product.imageUrl}
+              stock={product.stock}
             />
           );
         })}
+
       </section>
-      {allProducts.length === 0 && <p>No products found</p>}
+
     </div>
   );
 }
