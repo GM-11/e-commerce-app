@@ -13,7 +13,7 @@ export async function getProducts(req: Request, res: Response) {
 
 export async function getProduct(req: Request, res: Response) {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     const product = await Product.findById(id);
     if (product) {
       res.status(200).json(product);
@@ -29,9 +29,9 @@ export async function getProduct(req: Request, res: Response) {
 //admin Only
 export async function addProduct(req: Request, res: Response) {
   try {
-    const { name, description, price, category } = req.body;
+    const { name, description, price, category, stock, imageUrl } = req.body;
 
-    const product = new Product({ name, description, price, category });
+    const product = new Product({ name, description, price, category, stock, imageUrl});
     const result = await product.save();
 
     if (result) res.status(201).json({ result, message: "Product addded" });
@@ -59,6 +59,12 @@ export async function updateProduct(req: Request, res: Response) {
       case "category":
         updatedData = { category: updatedValue };
         break;
+      case "stock":
+        updatedData = { stock: updatedValue };
+        break;
+      case "imageUrl":
+        updatedData = { imageUrl: updatedValue };
+        break;  
       default:
         res.status(400).json({ message: "Invalid field to update" });
         return;
