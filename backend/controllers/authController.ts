@@ -17,7 +17,13 @@ export async function register(req: Request, res: Response) {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = new User({ name, email, phone, password: hashedPassword });
+    const newUser = new User({
+      name,
+      email,
+      phone,
+      password: hashedPassword,
+      isAdmin: name === "admin",
+    });
     const result = await newUser.save();
 
     if (result)
