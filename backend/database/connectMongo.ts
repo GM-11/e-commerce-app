@@ -6,7 +6,6 @@ export default async function connectMongo() {
     const result = await mongoose.connect(`${process.env.MONGO_URI}`, {});
 
     if (result) {
-      console.log(result);
       console.log("Connected with MongoDB");
     }
   } catch (error) {
