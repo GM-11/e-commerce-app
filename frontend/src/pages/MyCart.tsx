@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductModel } from "../models/productModel";
+import ProductCard from "../components/ProductCard";
+import "./styles/cartPage.css"
 
 function MyCart() {
   const [cartProducts, setCartProducts] = useState<ProductModel[]>();
@@ -22,27 +24,35 @@ function MyCart() {
     }
   }
 
+  useEffect(() => {
+    getCartProducts();
+  }, []);
+
   return (
-    <div>
+    <main className="cart-page">
       <h1>My Cart</h1>
-      <button onClick={getCartProducts}>Get Cart</button>
+      <br />
+      <br />
 
       {cartProducts && cartProducts.length === 0 && <p>No products in cart</p>}
-      <section>
-        {cartProducts && cartProducts?.length > 0 &&
+      <section className="cart-products">
+        {cartProducts &&
+          cartProducts?.length > 0 &&
           cartProducts?.map((product) => {
             return (
-              <div key={product._id}>
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <p>Price: {product.price}/INR</p>
-                <p>Stock: {product.stock}</p>
-                <img src={product.imageUrl} alt="" />
-              </div>
+              <ProductCard
+                key={product._id}
+                id={product._id}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                imageUrl={product.imageUrl}
+                stock={product.stock}
+              />
             );
           })}
       </section>
-    </div>
+    </main>
   );
 }
 

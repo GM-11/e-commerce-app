@@ -26,7 +26,7 @@ function LandingPage() {
   }, []);
 
   return (
-    <div className="landingPage">
+    <main className="landingPage">
       <h1>Products</h1>
 
       {allProducts.length === 0 && <p>No products found</p>}
@@ -49,7 +49,7 @@ function LandingPage() {
 
       </section>
 
-    </div>
+    </main>
   );
 }
 

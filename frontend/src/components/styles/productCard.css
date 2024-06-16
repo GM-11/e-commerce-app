@@ -1,5 +1,5 @@
 .productCard {
-  border: 1px solid black;
+  border: 2px solid var(--accent-color);
   min-height: 10rem;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,8 @@
   align-items: center;
   margin: 1rem 0 ;
   cursor: pointer;
+  border-radius: 10px;
+  color: var(--text-color)
 }
 
 .productCard img {
@@ -20,6 +22,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+
 }
 .content {
   width: 100%;

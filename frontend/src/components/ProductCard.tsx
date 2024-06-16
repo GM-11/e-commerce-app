@@ -16,7 +16,6 @@ function ProductCard(props: props) {
       <div className="productCard">
         <img src={props.imageUrl} alt={props.name} />
         <br />
-        <p>{props.id}</p>
         <div className="content">
           <section className="info">
             <h2>{props.name}</h2>

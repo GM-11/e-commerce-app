@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav>
       <section>
-        <h1>Navbar</h1>
+        <h1>Marketplace</h1>
       </section>
       <section>
         <ul>

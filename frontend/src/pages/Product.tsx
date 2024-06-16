@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ProductModel } from "../models/productModel";
+import "./styles/product.css";
 
 function Product() {
   const { productId } = useParams();
@@ -50,17 +51,42 @@ function Product() {
   useEffect(() => {
     getProduct();
   }, [productId]);
-  if (!product) return <p>Loading...</p>;
+  if (!product)
+    return (
+      <main>
+        <p>Loading...</p>
+      </main>
+    );
 
   return (
-    <div>
-      <h1>{product.name}</h1>
-      <img src={product.imageUrl} alt={product.name} />
-      <p>{product.description}</p>
-      <p>Price: {product.price}/INR</p>
-      <p>Stock: {product.stock}</p>
-      <button onClick={addToCart}>Add to cart</button>
-    </div>
+    <main className="product-page">
+      <section className="left">
+        <div className="img">
+          <img src={product.imageUrl} alt={product.name} />
+        </div>
+      </section>
+
+      <section className="right">
+        <h1>{product.name}</h1>
+        <br />
+        <p>{product.description}</p>
+        <br />
+        <section className="content">
+          <p>PRICE: </p>
+          <p>
+            <strong>{product.price}</strong>
+          </p>
+        </section>
+        <section className="content">
+          <p>STOCK LEFT: </p>
+          <p>{product.price}</p>
+        </section>
+        <br />
+        <button onClick={addToCart}>Add to cart</button>
+        <br />
+        <button onClick={addToCart}>Buy now cart</button>
+      </section>
+    </main>
   );
 }
 

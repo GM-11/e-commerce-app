@@ -1,0 +1,10 @@
+.cart-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+
+.cart-page {
+    padding: 1rem;
+}
