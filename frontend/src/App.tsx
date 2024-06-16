@@ -12,7 +12,6 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/my-cart" element={<MyCart />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/product/:productId" element={<Product />} />
       </Routes>
     </BrowserRouter>

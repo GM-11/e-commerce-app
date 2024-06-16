@@ -13,10 +13,7 @@ function Navbar() {
           </li>
           <li>
             <Link to={"/my-cart"}>My Cart</Link>{" "}
-          </li>
-          <li>
-            <Link to={"/profile"}>Profile</Link>{" "}
-          </li>
+          </li>      
         </ul>
       </section>
     </nav>
