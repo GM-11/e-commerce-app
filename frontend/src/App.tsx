@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Navbar from "./components/Navbar";
 import MyCart from "./pages/MyCart";
-import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 
 function App() {
