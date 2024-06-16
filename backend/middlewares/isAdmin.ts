@@ -2,8 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { User } from "../models/userModel";
 
-
-
 export async function isAdmin(req: Request, res: Response, next: NextFunction) {
   try {
     // cosnt
