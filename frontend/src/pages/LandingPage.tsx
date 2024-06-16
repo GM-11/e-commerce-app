@@ -7,7 +7,7 @@ function LandingPage() {
 
   async function getAllProducts() {
     try {
-      const response = await fetch("http://localhost:3000/products", {
+      const response = await fetch(`http://localhost:8081/products`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +26,7 @@ function LandingPage() {
   }, []);
 
   return (
-    <div>
+    <div className="landingPage">
       <h1>Products</h1>
 
       {allProducts.length === 0 && <p>No products found</p>}

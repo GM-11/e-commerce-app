@@ -9,7 +9,7 @@ function Product() {
   async function getProduct() {
     try {
       const response = await fetch(
-        `http://localhost:3000/products/${productId}`,
+        `http://localhost:8081/products/${productId}`,
         {
           method: "GET",
           headers: {
@@ -27,20 +27,21 @@ function Product() {
 
   async function addToCart() {
     try {
-      const response = await fetch(`http://localhost:3000/cart`, {
+      const response = await fetch(`http://localhost:8081/cart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: "userId",
+          userId: "666c5c4b85d16c3ba14f84f6",
           productId: productId,
           quantity: 1,
         }),
       });
       const data = await response.json();
+      console.log(data);
 
-      setProduct(data);
+      // setProduct(data);
     } catch (error) {
       console.log(error);
     }
