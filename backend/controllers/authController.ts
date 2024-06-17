@@ -25,14 +25,12 @@ export async function register(req: Request, res: Response) {
       password: hashedPassword,
       isAdmin: name === "admin",
     });
-const token = generateToken(newUser.id);
+    const token = generateToken(newUser.id);
 
+    res.cookie("token", token, {
+      httpOnly: true,
+    });
 
-res.cookie("token", token, {
-  httpOnly:true
-})
-
-  
     const result = await newUser.save();
 
     if (result)

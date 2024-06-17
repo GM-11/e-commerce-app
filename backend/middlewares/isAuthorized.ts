@@ -10,7 +10,7 @@ export function isAuthenticated(
   res: Response,
   next: NextFunction
 ) {
-  const token = req.header("Authorization")?.replace("Bearer ", "");
+  const token = req.header("Authorization")
   if (!token) {
     res.status(401).send("Access Denied");
     return;
