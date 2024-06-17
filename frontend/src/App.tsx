@@ -3,16 +3,24 @@ import LandingPage from "./pages/LandingPage";
 import Navbar from "./components/Navbar";
 import MyCart from "./pages/MyCart";
 import Product from "./pages/Product";
+import SignUp from "./pages/SignUp";
 
 function App() {
+  const storage = localStorage.getItem("token");
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/my-cart" element={<MyCart />} />
-        <Route path="/product/:productId" element={<Product />} />
-      </Routes>
+      {storage ? (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/my-cart" element={<MyCart />} />
+            <Route path="/product/:productId" element={<Product />} />
+          </Routes>
+        </>
+      ) : (
+        <SignUp />
+      )}
     </BrowserRouter>
   );
 }
