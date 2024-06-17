@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import { User } from "../models/userModel";
+import { generateToken } from "../middlewares/isAuthorized";
 
 export async function register(req: Request, res: Response) {
   try {
@@ -24,6 +25,14 @@ export async function register(req: Request, res: Response) {
       password: hashedPassword,
       isAdmin: name === "admin",
     });
+const token = generateToken(newUser.id);
+
+
+res.cookie("token", token, {
+  httpOnly:true
+})
+
+  
     const result = await newUser.save();
 
     if (result)
@@ -45,7 +54,7 @@ export async function login(req: Request, res: Response) {
     if (!isPasswordValid) {
       return res.status(400).json({ error: "Invalid email or password" });
     }
-    const token = jwt.sign({ userId: user._id }, "secretKey");
+    const token = generateToken(user.id);
     res.status(200).json({ token });
   } catch (error: any) {
     console.error("Error logging in:", error);

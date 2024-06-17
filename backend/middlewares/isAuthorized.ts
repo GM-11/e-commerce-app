@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
+export function generateToken(userId:string) {
+  return jwt.sign({userId}, "secretKey",   {expiresIn: 3 * 24 * 60 * 60})
+}
+
 export function isAuthenticated(
   req: Request,
   res: Response,
